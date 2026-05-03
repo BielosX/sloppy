@@ -106,7 +106,7 @@ func (m Model) renderMessages() string {
 		for _, content := range msg.Content {
 			switch c := content.(type) {
 			case *types.ContentBlockMemberText:
-				b.WriteString(c.Value)
+				b.WriteString(lipgloss.Wrap(c.Value, m.width-frameStyle.GetHorizontalFrameSize(), " "))
 			}
 		}
 		if i != length-1 {
